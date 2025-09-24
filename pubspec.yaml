@@ -1,0 +1,100 @@
+name: ethiopian_ecommerce
+description: A Flutter e-commerce app for Ethiopian market with B2C and B2B features
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: ">=3.10.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  
+  # State Management
+  flutter_riverpod: ^2.4.9
+  riverpod_annotation: ^2.3.3
+  
+  # Networking
+  dio: ^5.4.0
+  retrofit: ^4.0.3
+  json_annotation: ^4.8.1
+  
+  # Local Storage
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  shared_preferences: ^2.2.2
+  
+  # Routing
+  go_router: ^15.1.2
+  
+  # UI & Animations
+  cupertino_icons: ^1.0.6
+  lottie: ^3.2.0
+  flutter_animate: ^4.3.0
+  confetti: ^0.8.0
+  
+  # Images & Media
+  image_picker: ^1.0.4
+  cached_network_image: ^3.3.0
+  
+  # Authentication & Security
+  crypto: ^3.0.3
+  jwt_decoder: ^2.0.1
+  
+  # Utilities
+  intl: ^0.19.0
+  uuid: ^4.2.1
+  url_launcher: ^6.2.2
+  
+  # Permissions
+  permission_handler: ^12.0.1
+  
+  # Notifications
+  flutter_local_notifications: ^19.4.2
+  
+  # Ethiopian Payment Systems (placeholder for future integration)
+  # telebirr_sdk: ^1.0.0  # When available
+  # cbe_birr_sdk: ^1.0.0  # When available
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  
+  # Code Generation
+  build_runner: ^2.4.7
+  riverpod_generator: ^2.3.9
+  retrofit_generator: ^9.1.5
+  json_serializable: ^6.7.1
+  hive_generator: ^2.0.1
+
+flutter:
+  uses-material-design: true
+  generate: true
+  
+  assets:
+    - assets/images/
+    - assets/animations/
+    - assets/icons/
+    - assets/badges/
+  
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Regular.ttf
+        - asset: assets/fonts/Poppins-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Poppins-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Poppins-Bold.ttf
+          weight: 700
+
+flutter_intl:
+  enabled: true
+  class_name: S
+  main_locale: en
+  arb_dir: lib/l10n
+  output_dir: lib/generated

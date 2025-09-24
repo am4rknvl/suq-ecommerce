@@ -1,0 +1,146 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'user_model.dart';
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+User _$UserFromJson(Map<String, dynamic> json) => User(
+      id: json['id'] as String,
+      email: json['email'] as String,
+      phoneNumber: json['phoneNumber'] as String?,
+      firstName: json['firstName'] as String,
+      lastName: json['lastName'] as String,
+      profileImageUrl: json['profileImageUrl'] as String?,
+      role: $enumDecode(_$UserRoleEnumMap, json['role']),
+      createdAt: DateTime.parse(json['createdAt'] as String),
+      updatedAt: DateTime.parse(json['updatedAt'] as String),
+      xp: (json['xp'] as num).toInt(),
+      level: (json['level'] as num).toInt(),
+      badges:
+          (json['badges'] as List<dynamic>).map((e) => e as String).toList(),
+      stats: UserStats.fromJson(json['stats'] as Map<String, dynamic>),
+      sellerProfile: json['sellerProfile'] == null
+          ? null
+          : SellerProfile.fromJson(
+              json['sellerProfile'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
+      'id': instance.id,
+      'email': instance.email,
+      'phoneNumber': instance.phoneNumber,
+      'firstName': instance.firstName,
+      'lastName': instance.lastName,
+      'profileImageUrl': instance.profileImageUrl,
+      'role': _$UserRoleEnumMap[instance.role]!,
+      'createdAt': instance.createdAt.toIso8601String(),
+      'updatedAt': instance.updatedAt.toIso8601String(),
+      'xp': instance.xp,
+      'level': instance.level,
+      'badges': instance.badges,
+      'stats': instance.stats,
+      'sellerProfile': instance.sellerProfile,
+    };
+
+const _$UserRoleEnumMap = {
+  UserRole.buyer: 'buyer',
+  UserRole.seller: 'seller',
+  UserRole.both: 'both',
+};
+
+UserStats _$UserStatsFromJson(Map<String, dynamic> json) => UserStats(
+      totalOrders: (json['totalOrders'] as num).toInt(),
+      totalSales: (json['totalSales'] as num).toInt(),
+      totalSpent: (json['totalSpent'] as num).toDouble(),
+      totalEarned: (json['totalEarned'] as num).toDouble(),
+      averageRating: (json['averageRating'] as num).toDouble(),
+      reviewsCount: (json['reviewsCount'] as num).toInt(),
+      referralsCount: (json['referralsCount'] as num).toInt(),
+    );
+
+Map<String, dynamic> _$UserStatsToJson(UserStats instance) => <String, dynamic>{
+      'totalOrders': instance.totalOrders,
+      'totalSales': instance.totalSales,
+      'totalSpent': instance.totalSpent,
+      'totalEarned': instance.totalEarned,
+      'averageRating': instance.averageRating,
+      'reviewsCount': instance.reviewsCount,
+      'referralsCount': instance.referralsCount,
+    };
+
+SellerProfile _$SellerProfileFromJson(Map<String, dynamic> json) =>
+    SellerProfile(
+      shopName: json['shopName'] as String,
+      shopDescription: json['shopDescription'] as String?,
+      shopLogoUrl: json['shopLogoUrl'] as String?,
+      categories: (json['categories'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
+      address: json['address'] == null
+          ? null
+          : Address.fromJson(json['address'] as Map<String, dynamic>),
+      isVerified: json['isVerified'] as bool,
+      verifiedAt: json['verifiedAt'] == null
+          ? null
+          : DateTime.parse(json['verifiedAt'] as String),
+      stats: SellerStats.fromJson(json['stats'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$SellerProfileToJson(SellerProfile instance) =>
+    <String, dynamic>{
+      'shopName': instance.shopName,
+      'shopDescription': instance.shopDescription,
+      'shopLogoUrl': instance.shopLogoUrl,
+      'categories': instance.categories,
+      'address': instance.address,
+      'isVerified': instance.isVerified,
+      'verifiedAt': instance.verifiedAt?.toIso8601String(),
+      'stats': instance.stats,
+    };
+
+SellerStats _$SellerStatsFromJson(Map<String, dynamic> json) => SellerStats(
+      totalProducts: (json['totalProducts'] as num).toInt(),
+      activeProducts: (json['activeProducts'] as num).toInt(),
+      totalOrders: (json['totalOrders'] as num).toInt(),
+      completedOrders: (json['completedOrders'] as num).toInt(),
+      totalRevenue: (json['totalRevenue'] as num).toDouble(),
+      averageRating: (json['averageRating'] as num).toDouble(),
+      reviewsCount: (json['reviewsCount'] as num).toInt(),
+      lastSale: json['lastSale'] == null
+          ? null
+          : DateTime.parse(json['lastSale'] as String),
+    );
+
+Map<String, dynamic> _$SellerStatsToJson(SellerStats instance) =>
+    <String, dynamic>{
+      'totalProducts': instance.totalProducts,
+      'activeProducts': instance.activeProducts,
+      'totalOrders': instance.totalOrders,
+      'completedOrders': instance.completedOrders,
+      'totalRevenue': instance.totalRevenue,
+      'averageRating': instance.averageRating,
+      'reviewsCount': instance.reviewsCount,
+      'lastSale': instance.lastSale?.toIso8601String(),
+    };
+
+Address _$AddressFromJson(Map<String, dynamic> json) => Address(
+      street: json['street'] as String,
+      city: json['city'] as String,
+      region: json['region'] as String,
+      postalCode: json['postalCode'] as String?,
+      country: json['country'] as String,
+      latitude: (json['latitude'] as num?)?.toDouble(),
+      longitude: (json['longitude'] as num?)?.toDouble(),
+    );
+
+Map<String, dynamic> _$AddressToJson(Address instance) => <String, dynamic>{
+      'street': instance.street,
+      'city': instance.city,
+      'region': instance.region,
+      'postalCode': instance.postalCode,
+      'country': instance.country,
+      'latitude': instance.latitude,
+      'longitude': instance.longitude,
+    };

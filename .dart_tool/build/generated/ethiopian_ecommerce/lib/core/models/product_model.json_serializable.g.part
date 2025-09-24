@@ -1,0 +1,132 @@
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+Product _$ProductFromJson(Map<String, dynamic> json) => Product(
+      id: json['id'] as String,
+      name: json['name'] as String,
+      description: json['description'] as String,
+      price: (json['price'] as num).toDouble(),
+      originalPrice: (json['originalPrice'] as num?)?.toDouble(),
+      currency: json['currency'] as String,
+      imageUrls:
+          (json['imageUrls'] as List<dynamic>).map((e) => e as String).toList(),
+      category: json['category'] as String,
+      tags: (json['tags'] as List<dynamic>).map((e) => e as String).toList(),
+      status: $enumDecode(_$ProductStatusEnumMap, json['status']),
+      stockQuantity: (json['stockQuantity'] as num).toInt(),
+      minOrderQuantity: (json['minOrderQuantity'] as num?)?.toInt(),
+      maxOrderQuantity: (json['maxOrderQuantity'] as num?)?.toInt(),
+      sellerId: json['sellerId'] as String,
+      sellerName: json['sellerName'] as String,
+      sellerShopName: json['sellerShopName'] as String?,
+      weight: (json['weight'] as num?)?.toDouble(),
+      dimensions: json['dimensions'] == null
+          ? null
+          : ProductDimensions.fromJson(
+              json['dimensions'] as Map<String, dynamic>),
+      createdAt: DateTime.parse(json['createdAt'] as String),
+      updatedAt: DateTime.parse(json['updatedAt'] as String),
+      averageRating: (json['averageRating'] as num).toDouble(),
+      reviewsCount: (json['reviewsCount'] as num).toInt(),
+      reviews: (json['reviews'] as List<dynamic>?)
+          ?.map((e) => ProductReview.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      sellerCity: json['sellerCity'] as String?,
+      sellerRegion: json['sellerRegion'] as String?,
+    );
+
+Map<String, dynamic> _$ProductToJson(Product instance) => <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'description': instance.description,
+      'price': instance.price,
+      'originalPrice': instance.originalPrice,
+      'currency': instance.currency,
+      'imageUrls': instance.imageUrls,
+      'category': instance.category,
+      'tags': instance.tags,
+      'status': _$ProductStatusEnumMap[instance.status]!,
+      'stockQuantity': instance.stockQuantity,
+      'minOrderQuantity': instance.minOrderQuantity,
+      'maxOrderQuantity': instance.maxOrderQuantity,
+      'sellerId': instance.sellerId,
+      'sellerName': instance.sellerName,
+      'sellerShopName': instance.sellerShopName,
+      'weight': instance.weight,
+      'dimensions': instance.dimensions,
+      'createdAt': instance.createdAt.toIso8601String(),
+      'updatedAt': instance.updatedAt.toIso8601String(),
+      'averageRating': instance.averageRating,
+      'reviewsCount': instance.reviewsCount,
+      'reviews': instance.reviews,
+      'sellerCity': instance.sellerCity,
+      'sellerRegion': instance.sellerRegion,
+    };
+
+const _$ProductStatusEnumMap = {
+  ProductStatus.active: 'active',
+  ProductStatus.inactive: 'inactive',
+  ProductStatus.outOfStock: 'out_of_stock',
+  ProductStatus.discontinued: 'discontinued',
+};
+
+ProductDimensions _$ProductDimensionsFromJson(Map<String, dynamic> json) =>
+    ProductDimensions(
+      length: (json['length'] as num).toDouble(),
+      width: (json['width'] as num).toDouble(),
+      height: (json['height'] as num).toDouble(),
+      unit: json['unit'] as String,
+    );
+
+Map<String, dynamic> _$ProductDimensionsToJson(ProductDimensions instance) =>
+    <String, dynamic>{
+      'length': instance.length,
+      'width': instance.width,
+      'height': instance.height,
+      'unit': instance.unit,
+    };
+
+ProductReview _$ProductReviewFromJson(Map<String, dynamic> json) =>
+    ProductReview(
+      id: json['id'] as String,
+      userId: json['userId'] as String,
+      userName: json['userName'] as String,
+      userAvatarUrl: json['userAvatarUrl'] as String?,
+      rating: (json['rating'] as num).toDouble(),
+      comment: json['comment'] as String?,
+      imageUrls: (json['imageUrls'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      createdAt: DateTime.parse(json['createdAt'] as String),
+      isVerifiedPurchase: json['isVerifiedPurchase'] as bool,
+    );
+
+Map<String, dynamic> _$ProductReviewToJson(ProductReview instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'userId': instance.userId,
+      'userName': instance.userName,
+      'userAvatarUrl': instance.userAvatarUrl,
+      'rating': instance.rating,
+      'comment': instance.comment,
+      'imageUrls': instance.imageUrls,
+      'createdAt': instance.createdAt.toIso8601String(),
+      'isVerifiedPurchase': instance.isVerifiedPurchase,
+    };
+
+CartItem _$CartItemFromJson(Map<String, dynamic> json) => CartItem(
+      productId: json['productId'] as String,
+      product: Product.fromJson(json['product'] as Map<String, dynamic>),
+      quantity: (json['quantity'] as num).toInt(),
+      addedAt: DateTime.parse(json['addedAt'] as String),
+      selectedVariant: json['selectedVariant'] as String?,
+    );
+
+Map<String, dynamic> _$CartItemToJson(CartItem instance) => <String, dynamic>{
+      'productId': instance.productId,
+      'product': instance.product,
+      'quantity': instance.quantity,
+      'addedAt': instance.addedAt.toIso8601String(),
+      'selectedVariant': instance.selectedVariant,
+    };
