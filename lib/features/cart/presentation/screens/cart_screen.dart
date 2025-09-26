@@ -67,8 +67,8 @@ class _CartScreenState extends State<CartScreen> {
 
     if (mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Item removed from cart'),
+        SnackBar(
+          content: const Text('Item removed from cart'),
           backgroundColor: AppTheme.success,
         ),
       );
@@ -96,8 +96,8 @@ class _CartScreenState extends State<CartScreen> {
               
               if (mounted) {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('Cart cleared'),
+                  SnackBar(
+                    content: const Text('Cart cleared'),
                     backgroundColor: AppTheme.success,
                   ),
                 );

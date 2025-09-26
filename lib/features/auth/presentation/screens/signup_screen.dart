@@ -46,8 +46,8 @@ class _SignupScreenState extends State<SignupScreen> {
     
     if (!_agreeToTerms) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Please agree to the Terms and Conditions'),
+        SnackBar(
+          content: const Text('Please agree to the Terms and Conditions'),
           backgroundColor: AppTheme.error,
         ),
       );

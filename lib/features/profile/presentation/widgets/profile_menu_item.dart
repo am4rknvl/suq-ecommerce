@@ -1,6 +1,6 @@
+import 'package:ethiopian_ecommerce/core/theme/app_theme.dart';
+import 'package:ethiopian_ecommerce/core/theme/suq_colors.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../core/theme/app_theme.dart';
 
 class ProfileMenuItem extends StatelessWidget {
   final IconData icon;
@@ -54,18 +54,19 @@ class ProfileMenuItem extends StatelessWidget {
           style: Theme.of(context).textTheme.titleMedium?.copyWith(
                 fontWeight: FontWeight.w600,
                 color: titleColor,
-          ),
+              ),
         ),
         subtitle: Text(
           subtitle,
           style: Theme.of(context).textTheme.bodySmall?.copyWith(
                 color: AppTheme.mediumGrey,
-          ),
+              ),
         ),
-        trailing: trailing ?? const Icon(
-          Icons.chevron_right,
-          color: AppTheme.mediumGrey,
-        ),
+        trailing: trailing ??
+            Icon(
+              Icons.chevron_right,
+              color: SuqColors.mediumGrey,
+            ),
       ),
     );
   }

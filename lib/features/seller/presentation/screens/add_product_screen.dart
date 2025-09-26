@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../../core/theme/app_theme.dart';
-import '../../../../core/services/storage_service.dart';
+import '../../../../core/theme/suq_colors.dart';
 import '../../../auth/presentation/widgets/auth_text_field.dart';
 
 class AddProductScreen extends StatefulWidget {
@@ -106,14 +106,14 @@ class _AddProductScreenState extends State<AddProductScreen> {
           'Product Images',
           style: Theme.of(context).textTheme.titleLarge?.copyWith(
                 fontWeight: FontWeight.bold,
-          ),
+              ),
         ),
         const SizedBox(height: 8),
         Text(
           'Add up to 5 images. First image will be the main photo.',
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                 color: AppTheme.mediumGrey,
-          ),
+              ),
         ),
         const SizedBox(height: 16),
         SizedBox(
@@ -227,7 +227,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
               child: Container(
                 padding: const EdgeInsets.all(4),
                 decoration: const BoxDecoration(
-                  color: AppTheme.error,
+                  color: SuqColors.error,
                   shape: BoxShape.circle,
                 ),
                 child: const Icon(
@@ -251,7 +251,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
           'Basic Information',
           style: Theme.of(context).textTheme.titleLarge?.copyWith(
                 fontWeight: FontWeight.bold,
-          ),
+              ),
         ),
         const SizedBox(height: 16),
         AuthTextField(
@@ -331,7 +331,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
           'Pricing & Inventory',
           style: Theme.of(context).textTheme.titleLarge?.copyWith(
                 fontWeight: FontWeight.bold,
-          ),
+              ),
         ),
         const SizedBox(height: 16),
         Row(
@@ -398,7 +398,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
           'Product Details',
           style: Theme.of(context).textTheme.titleLarge?.copyWith(
                 fontWeight: FontWeight.bold,
-          ),
+              ),
         ),
         const SizedBox(height: 16),
         TextFormField(
@@ -435,7 +435,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
           'Shipping Information',
           style: Theme.of(context).textTheme.titleLarge?.copyWith(
                 fontWeight: FontWeight.bold,
-          ),
+              ),
         ),
         const SizedBox(height: 16),
         Container(
@@ -463,7 +463,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
                           fontWeight: FontWeight.bold,
                           color: AppTheme.primaryGreen,
-                    ),
+                        ),
                   ),
                 ],
               ),
@@ -510,7 +510,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Please add at least one product image'),
-          backgroundColor: AppTheme.error,
+          backgroundColor: SuqColors.error,
         ),
       );
       return;
@@ -544,7 +544,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
             Container(
               width: 80,
               height: 80,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 color: AppTheme.success,
                 shape: BoxShape.circle,
               ),
@@ -563,7 +563,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
               'Product Added Successfully!',
               style: Theme.of(context).textTheme.titleLarge?.copyWith(
                     fontWeight: FontWeight.bold,
-              ),
+                  ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 8),
@@ -571,7 +571,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
               'You earned 50 XP for adding a new product!',
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     color: AppTheme.mediumGrey,
-              ),
+                  ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 16),

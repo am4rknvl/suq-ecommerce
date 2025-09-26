@@ -3,6 +3,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/theme/app_theme.dart';
+import '../../../../core/theme/suq_colors.dart';
 import '../../../../core/services/storage_service.dart';
 import '../widgets/seller_stats_card.dart';
 import '../widgets/quick_seller_actions.dart';
@@ -123,14 +124,14 @@ class _SellerDashboardScreenState extends State<SellerDashboardScreen> {
     if (confirmed == true) {
       // Enable seller mode
       await StorageService.saveUserRole('both');
-      
+
       // Award XP for becoming a seller
       final currentXP = StorageService.getUserXP();
       await StorageService.saveUserXP(currentXP + 50);
-      
+
       // Add first seller badge
       await StorageService.addBadge('new_seller');
-      
+
       setState(() {
         _isSellerModeEnabled = true;
       });
@@ -165,9 +166,7 @@ class _SellerDashboardScreenState extends State<SellerDashboardScreen> {
         foregroundColor: Colors.white,
         actions: [
           IconButton(
-            onPressed: () {
-              // TODO: Navigate to seller settings
-            },
+            onPressed: () {},
             icon: const Icon(Icons.settings),
           ),
         ],
@@ -182,7 +181,7 @@ class _SellerDashboardScreenState extends State<SellerDashboardScreen> {
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                 gradient: const LinearGradient(
-                  colors: [AppTheme.primaryGreen, Color(0xFF1B5E20)],
+                  colors: [SuqColors.secondary, Color(0xFF1B5E20)],
                 ),
                 borderRadius: BorderRadius.circular(12),
               ),
@@ -194,17 +193,21 @@ class _SellerDashboardScreenState extends State<SellerDashboardScreen> {
                       children: [
                         Text(
                           'Welcome, Seller!',
-                          style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                          style: Theme.of(context)
+                              .textTheme
+                              .headlineSmall
+                              ?.copyWith(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
-                          ),
+                              ),
                         ),
                         const SizedBox(height: 4),
                         Text(
                           'Manage your shop and grow your business',
-                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                color: Colors.white.withOpacity(0.9),
-                          ),
+                          style:
+                              Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                    color: Colors.white.withOpacity(0.9),
+                                  ),
                         ),
                       ],
                     ),
@@ -269,10 +272,11 @@ class _SellerDashboardScreenState extends State<SellerDashboardScreen> {
                       const SizedBox(width: 8),
                       Text(
                         'Seller Tips',
-                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                              fontWeight: FontWeight.bold,
-                              color: AppTheme.primaryYellow,
-                        ),
+                        style:
+                            Theme.of(context).textTheme.titleMedium?.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                  color: AppTheme.primaryYellow,
+                                ),
                       ),
                     ],
                   ),
@@ -298,9 +302,7 @@ class _SellerDashboardScreenState extends State<SellerDashboardScreen> {
         foregroundColor: Colors.white,
         icon: const Icon(Icons.add),
         label: const Text('Add Product'),
-      )
-          .animate(delay: const Duration(milliseconds: 1000))
-          .scale(
+      ).animate(delay: const Duration(milliseconds: 1000)).scale(
             duration: const Duration(milliseconds: 400),
             curve: Curves.elasticOut,
           ),
@@ -326,46 +328,38 @@ class _SellerDashboardScreenState extends State<SellerDashboardScreen> {
                 color: AppTheme.primaryGreen.withOpacity(0.1),
                 shape: BoxShape.circle,
               ),
-              child: const Icon(
+              child: Icon(
                 Icons.store,
                 size: 60,
                 color: AppTheme.primaryGreen,
               ),
-            )
-                .animate()
-                .scale(
+            ).animate().scale(
                   duration: const Duration(milliseconds: 600),
                   curve: Curves.elasticOut,
                 ),
-
             const SizedBox(height: 32),
-
             Text(
               'Start Selling on Ethiopian SUQ',
               style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                     fontWeight: FontWeight.bold,
-              ),
+                  ),
               textAlign: TextAlign.center,
             )
                 .animate(delay: const Duration(milliseconds: 200))
                 .fadeIn(duration: const Duration(milliseconds: 600))
                 .slideY(begin: 0.3, curve: Curves.easeOut),
-
             const SizedBox(height: 16),
-
             Text(
               'Join thousands of Ethiopian entrepreneurs and start your online business today!',
               style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                     color: AppTheme.mediumGrey,
-              ),
+                  ),
               textAlign: TextAlign.center,
             )
                 .animate(delay: const Duration(milliseconds: 400))
                 .fadeIn(duration: const Duration(milliseconds: 600))
                 .slideY(begin: 0.3, curve: Curves.easeOut),
-
             const SizedBox(height: 48),
-
             SizedBox(
               width: double.infinity,
               child: ElevatedButton.icon(

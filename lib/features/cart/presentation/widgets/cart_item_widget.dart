@@ -179,7 +179,7 @@ class CartItemWidget extends StatelessWidget {
               // Remove button
               IconButton(
                 onPressed: onRemove,
-                icon: const Icon(
+                icon: Icon(
                   Icons.delete_outline,
                   color: AppTheme.error,
                 ),

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/theme/app_theme.dart';
-
 class SearchBarWidget extends StatelessWidget {
   final TextEditingController controller;
   final Function(String) onChanged;

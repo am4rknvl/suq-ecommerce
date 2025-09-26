@@ -64,13 +64,13 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             ),
             flexibleSpace: FlexibleSpaceBar(
               background: Container(
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                     colors: [
                       AppTheme.primaryGreen,
-                      Color(0xFF1B5E20),
+                      const Color(0xFF1B5E20),
                     ],
                   ),
                 ),
@@ -121,7 +121,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                     child: Container(
                                       width: 12,
                                       height: 12,
-                                      decoration: const BoxDecoration(
+                                      decoration: BoxDecoration(
                                         color: AppTheme.primaryRed,
                                         shape: BoxShape.circle,
                                       ),
@@ -230,10 +230,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   child: Container(
                     padding: const EdgeInsets.all(20),
                     decoration: BoxDecoration(
-                      gradient: const LinearGradient(
+                      gradient: LinearGradient(
                         colors: [
                           AppTheme.primaryYellow,
-                          Color(0xFFFFC107),
+                          const Color(0xFFFFC107),
                         ],
                       ),
                       borderRadius: BorderRadius.circular(16),

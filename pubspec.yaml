@@ -10,8 +10,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_localizations:
-    sdk: flutter
   
   # State Management
   flutter_riverpod: ^2.4.9
@@ -35,6 +33,7 @@ dependencies:
   lottie: ^3.2.0
   flutter_animate: ^4.3.0
   confetti: ^0.8.0
+  google_fonts: ^6.1.0
   
   # Images & Media
   image_picker: ^1.0.4
@@ -45,7 +44,6 @@ dependencies:
   jwt_decoder: ^2.0.1
   
   # Utilities
-  intl: ^0.19.0
   uuid: ^4.2.1
   url_launcher: ^6.2.2
   
@@ -73,28 +71,3 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-  generate: true
-  
-  assets:
-    - assets/images/
-    - assets/animations/
-    - assets/icons/
-    - assets/badges/
-  
-  fonts:
-    - family: Poppins
-      fonts:
-        - asset: assets/fonts/Poppins-Regular.ttf
-        - asset: assets/fonts/Poppins-Medium.ttf
-          weight: 500
-        - asset: assets/fonts/Poppins-SemiBold.ttf
-          weight: 600
-        - asset: assets/fonts/Poppins-Bold.ttf
-          weight: 700
-
-flutter_intl:
-  enabled: true
-  class_name: S
-  main_locale: en
-  arb_dir: lib/l10n
-  output_dir: lib/generated

@@ -403,11 +403,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.3"
-  flutter_localizations:
-    dependency: "direct main"
-    description: flutter
-    source: sdk
-    version: "0.0.0"
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:
@@ -474,6 +469,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "15.1.2"
+  google_fonts:
+    dependency: "direct main"
+    description:
+      name: google_fonts
+      sha256: df9763500dadba0155373e9cb44e202ce21bd9ed5de6bdbd05c5854e86839cb8
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.3.0"
   graphs:
     dependency: transitive
     description:
@@ -594,14 +597,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.2.1+1"
-  intl:
-    dependency: "direct main"
-    description:
-      name: intl
-      sha256: d6f56758b7d3014a48af9701c085700aac781a92a87a62b1333b46d8879661cf
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.19.0"
   io:
     dependency: transitive
     description:

@@ -124,8 +124,8 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
       
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('OTP sent successfully'),
+          SnackBar(
+            content: const Text('OTP sent successfully'),
             backgroundColor: AppTheme.success,
           ),
         );
@@ -166,7 +166,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                 color: AppTheme.success.withOpacity(0.1),
                 shape: BoxShape.circle,
               ),
-              child: const Icon(
+              child: Icon(
                 Icons.check_circle,
                 size: 50,
                 color: AppTheme.success,
@@ -310,7 +310,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                       color: AppTheme.primaryGreen.withOpacity(0.1),
                       shape: BoxShape.circle,
                     ),
-                    child: const Icon(
+                    child: Icon(
                       Icons.phone_android,
                       size: 40,
                       color: AppTheme.primaryGreen,
@@ -345,7 +345,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                         const TextSpan(text: 'We sent a 6-digit code to '),
                         TextSpan(
                           text: '+251 ${widget.phoneNumber}',
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontWeight: FontWeight.w600,
                             color: AppTheme.primaryGreen,
                           ),
@@ -386,7 +386,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12),
-                          borderSide: const BorderSide(
+                          borderSide: BorderSide(
                             color: AppTheme.primaryGreen,
                             width: 2,
                           ),

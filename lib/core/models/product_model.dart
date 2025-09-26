@@ -30,7 +30,7 @@ class Product {
   final int reviewsCount;
   final List<ProductReview>? reviews;
   
-  // Seller location for delivery estimation
+
   final String? sellerCity;
   final String? sellerRegion;
 

@@ -125,7 +125,7 @@ class RecentBadgesSection extends StatelessWidget {
                             child: Container(
                               width: 20,
                               height: 20,
-                              decoration: const BoxDecoration(
+                              decoration: BoxDecoration(
                                 color: AppTheme.primaryRed,
                                 shape: BoxShape.circle,
                               ),

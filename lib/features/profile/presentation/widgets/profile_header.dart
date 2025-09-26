@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
-import '../../../../core/theme/app_theme.dart';
+import '../../../../core/theme/suq_colors.dart';
 import '../../../../core/services/storage_service.dart';
 
 class ProfileHeader extends StatelessWidget {
@@ -11,12 +11,12 @@ class ProfileHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: Get actual user data from provider
     final userData = StorageService.getUserData();
-    final userName = userData != null 
+    final userName = userData != null
         ? '${userData['firstName'] ?? ''} ${userData['lastName'] ?? ''}'.trim()
         : 'John Doe';
     final userEmail = userData?['email'] ?? 'john.doe@example.com';
     final userRole = StorageService.getUserRole();
-    
+
     return Container(
       margin: const EdgeInsets.all(16),
       padding: const EdgeInsets.all(20),
@@ -25,14 +25,14 @@ class ProfileHeader extends StatelessWidget {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            AppTheme.primaryGreen,
+            SuqColors.secondary,
             Color(0xFF1B5E20),
           ],
         ),
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: AppTheme.primaryGreen.withOpacity(0.3),
+            color: SuqColors.secondary.withOpacity(0.3),
             blurRadius: 12,
             offset: const Offset(0, 6),
           ),
@@ -60,7 +60,7 @@ class ProfileHeader extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
-              
+
               // Edit button
               Positioned(
                 bottom: 0,
@@ -82,14 +82,12 @@ class ProfileHeader extends StatelessWidget {
                   child: const Icon(
                     Icons.edit,
                     size: 16,
-                    color: AppTheme.primaryGreen,
+                    color: SuqColors.secondary,
                   ),
                 ),
               ),
             ],
-          )
-              .animate()
-              .scale(
+          ).animate().scale(
                 duration: const Duration(milliseconds: 600),
                 curve: Curves.elasticOut,
               ),
@@ -148,7 +146,7 @@ class ProfileHeader extends StatelessWidget {
                       ),
                       const SizedBox(width: 4),
                       Text(
-                        userRole == 'seller' 
+                        userRole == 'seller'
                             ? 'Seller'
                             : userRole == 'both'
                                 ? 'Buyer & Seller'
@@ -156,7 +154,7 @@ class ProfileHeader extends StatelessWidget {
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
                               color: Colors.white,
                               fontWeight: FontWeight.w600,
-                        ),
+                            ),
                       ),
                     ],
                   ),
@@ -187,7 +185,8 @@ class ProfileHeader extends StatelessWidget {
                         child: CircularProgressIndicator(
                           value: 0.85, // TODO: Calculate actual completion
                           backgroundColor: Colors.white.withOpacity(0.3),
-                          valueColor: const AlwaysStoppedAnimation<Color>(Colors.white),
+                          valueColor:
+                              const AlwaysStoppedAnimation<Color>(Colors.white),
                           strokeWidth: 3,
                         ),
                       ),
@@ -198,7 +197,7 @@ class ProfileHeader extends StatelessWidget {
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
-                        ),
+                            ),
                       ),
                     ),
                   ],
@@ -209,7 +208,7 @@ class ProfileHeader extends StatelessWidget {
                 'Profile',
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
                       color: Colors.white.withOpacity(0.8),
-                ),
+                    ),
               ),
             ],
           )

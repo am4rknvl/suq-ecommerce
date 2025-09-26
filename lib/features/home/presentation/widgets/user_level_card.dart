@@ -20,12 +20,12 @@ class UserLevelCard extends StatelessWidget {
       margin: const EdgeInsets.all(16),
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        gradient: const LinearGradient(
+        gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
             AppTheme.xpBlue,
-            Color(0xFF1565C0),
+            const Color(0xFF1565C0),
           ],
         ),
         borderRadius: BorderRadius.circular(16),

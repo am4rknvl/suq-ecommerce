@@ -228,7 +228,7 @@ class _OrderCard extends StatelessWidget {
                       },
                       style: OutlinedButton.styleFrom(
                         foregroundColor: AppTheme.error,
-                        side: const BorderSide(color: AppTheme.error),
+                        side: BorderSide(color: AppTheme.error),
                       ),
                       child: const Text('Decline'),
                     ),

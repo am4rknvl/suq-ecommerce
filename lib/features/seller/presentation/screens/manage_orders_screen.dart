@@ -240,14 +240,14 @@ class _ManageOrdersScreenState extends State<ManageOrdersScreen>
             message,
             style: Theme.of(context).textTheme.titleLarge?.copyWith(
                   color: Colors.grey.shade600,
-            ),
+                ),
           ),
           const SizedBox(height: 8),
           Text(
             'Orders will appear here as customers place them',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   color: Colors.grey.shade500,
-            ),
+                ),
           ),
         ],
       ),
@@ -256,7 +256,8 @@ class _ManageOrdersScreenState extends State<ManageOrdersScreen>
 
   void _updateOrderStatus(String orderId, String newStatus) {
     setState(() {
-      final orderIndex = _mockOrders.indexWhere((order) => order['id'] == orderId);
+      final orderIndex =
+          _mockOrders.indexWhere((order) => order['id'] == orderId);
       if (orderIndex != -1) {
         _mockOrders[orderIndex]['status'] = newStatus;
       }
@@ -305,13 +306,13 @@ class _OrderCard extends StatelessWidget {
                     order['id'],
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
                           fontWeight: FontWeight.bold,
-                    ),
+                        ),
                   ),
                   Text(
                     order['customerName'],
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                           color: AppTheme.mediumGrey,
-                    ),
+                        ),
                   ),
                 ],
               ),
@@ -342,7 +343,7 @@ class _OrderCard extends StatelessWidget {
                   order['productName'],
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         fontWeight: FontWeight.w500,
-                  ),
+                      ),
                 ),
               ),
               Text(
@@ -350,7 +351,7 @@ class _OrderCard extends StatelessWidget {
                 style: Theme.of(context).textTheme.titleMedium?.copyWith(
                       fontWeight: FontWeight.bold,
                       color: AppTheme.primaryGreen,
-                ),
+                    ),
               ),
             ],
           ),
@@ -389,7 +390,7 @@ class _OrderCard extends StatelessWidget {
             width: 120,
             child: Text(
               label,
-              style: const TextStyle(
+              style: TextStyle(
                 fontWeight: FontWeight.w500,
                 color: AppTheme.mediumGrey,
               ),
@@ -406,7 +407,8 @@ class _OrderCard extends StatelessWidget {
     );
   }
 
-  Widget _buildActionButtons(BuildContext context, String orderId, String status) {
+  Widget _buildActionButtons(
+      BuildContext context, String orderId, String status) {
     switch (status) {
       case 'pending':
         return Row(
@@ -416,7 +418,7 @@ class _OrderCard extends StatelessWidget {
                 onPressed: () => _showCancelDialog(context, orderId),
                 style: OutlinedButton.styleFrom(
                   foregroundColor: AppTheme.error,
-                  side: const BorderSide(color: AppTheme.error),
+                  side: BorderSide(color: AppTheme.error),
                 ),
                 child: const Text('Decline'),
               ),

@@ -21,7 +21,6 @@ class _LoginScreenState extends State<LoginScreen> {
   final _passwordController = TextEditingController();
   final _phoneController = TextEditingController();
   
-  bool _isLoading = false;
   bool _obscurePassword = true;
   bool _isPhoneLogin = false;
   bool _rememberMe = false;
@@ -35,72 +34,13 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Future<void> _login() async {
-    if (!_formKey.currentState!.validate()) return;
-
-    setState(() {
-      _isLoading = true;
-    });
-
-    try {
-      // Simulate API call
-      await Future.delayed(const Duration(seconds: 2));
-      
-      // TODO: Implement actual login logic with Go backend
-      // For now, simulate successful login
-      if (mounted) {
-        context.go('/home');
-      }
-    } catch (e) {
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Login failed: ${e.toString()}'),
-            backgroundColor: AppTheme.error,
-          ),
-        );
-      }
-    } finally {
-      if (mounted) {
-        setState(() {
-          _isLoading = false;
-        });
-      }
-    }
+    // For development: bypass all validation and go directly to home
+    context.go('/home');
   }
 
   Future<void> _loginWithPhone() async {
-    if (!_formKey.currentState!.validate()) return;
-
-    setState(() {
-      _isLoading = true;
-    });
-
-    try {
-      // Simulate sending OTP
-      await Future.delayed(const Duration(seconds: 1));
-      
-      if (mounted) {
-        context.pushNamed(
-          'otp-verification',
-          extra: _phoneController.text,
-        );
-      }
-    } catch (e) {
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Failed to send OTP: ${e.toString()}'),
-            backgroundColor: AppTheme.error,
-          ),
-        );
-      }
-    } finally {
-      if (mounted) {
-        setState(() {
-          _isLoading = false;
-        });
-      }
-    }
+    // For development: bypass phone login and go directly to home
+    context.go('/home');
   }
 
   void _toggleLoginMethod() {
@@ -338,20 +278,11 @@ class _LoginScreenState extends State<LoginScreen> {
 
                 // Login button
                 ElevatedButton(
-                  onPressed: _isLoading ? null : (_isPhoneLogin ? _loginWithPhone : _login),
+                  onPressed: _isPhoneLogin ? _loginWithPhone : _login,
                   style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.symmetric(vertical: 16),
                   ),
-                  child: _isLoading
-                      ? const SizedBox(
-                          height: 20,
-                          width: 20,
-                          child: CircularProgressIndicator(
-                            strokeWidth: 2,
-                            valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-                          ),
-                        )
-                      : Text(_isPhoneLogin ? 'Send OTP' : 'Sign In'),
+                  child: Text(_isPhoneLogin ? 'Send OTP' : 'Sign In'),
                 )
                     .animate(delay: const Duration(milliseconds: 1200))
                     .fadeIn(duration: const Duration(milliseconds: 400))
@@ -386,7 +317,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         icon: Icons.g_mobiledata,
                         label: 'Google',
                         onPressed: () {
-                          // TODO: Implement Google login
+                          // For development: bypass Google login
+                          context.go('/home');
                         },
                       ),
                     ),

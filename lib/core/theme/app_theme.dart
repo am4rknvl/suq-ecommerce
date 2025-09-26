@@ -1,87 +1,80 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'suq_colors.dart';
+import 'suq_typography.dart';
 
+/// SUQ App Theme
+/// Modern, culturally-relevant theme system for Ethiopian e-commerce
 class AppTheme {
-  // Ethiopian-inspired color palette
-  static const Color primaryGreen = Color(0xFF2E7D32); // Ethiopian flag green
-  static const Color primaryYellow = Color(0xFFFFD600); // Ethiopian flag yellow
-  static const Color primaryRed = Color(0xFFD32F2F); // Ethiopian flag red
+  // Static color getters for easy access
+  static Color get primaryGreen => SuqColors.primary;
+  static Color get lightGrey => SuqColors.surfaceVariantLight;
+  static Color get mediumGrey => SuqColors.onSurfaceVariantLight;
+  static Color get darkGrey => SuqColors.onSurfaceLight;
+  static Color get error => SuqColors.error;
+  static Color get success => SuqColors.success;
+  static Color get primaryRed => SuqColors.error; // Using error color for red
+  static Color get primaryYellow => SuqColors.warning;
+  static Color get xpBlue => SuqColors.info;
+  static Color get badgeGold => SuqColors.gold;
+  static Color get badgeSilver => const Color(0xFFC0C0C0); // Silver color
+  static Color get badgeBronze => const Color(0xFFCD7F32); // Bronze color
   
-  // Gamification colors
-  static const Color xpBlue = Color(0xFF1976D2);
-  static const Color badgeGold = Color(0xFFFFB300);
-  static const Color badgeSilver = Color(0xFF9E9E9E);
-  static const Color badgeBronze = Color(0xFF8D6E63);
-  
-  // Neutral colors
-  static const Color darkGrey = Color(0xFF212121);
-  static const Color mediumGrey = Color(0xFF757575);
-  static const Color lightGrey = Color(0xFFF5F5F5);
-  static const Color white = Color(0xFFFFFFFF);
-  
-  // Success/Error colors
-  static const Color success = Color(0xFF4CAF50);
-  static const Color warning = Color(0xFFFF9800);
-  static const Color error = Color(0xFFF44336);
-  static const Color info = Color(0xFF2196F3);
-
+  /// Light theme configuration
   static ThemeData get lightTheme {
+    final colorScheme = SuqColors.lightColorScheme;
+    final textTheme = _buildTextTheme(colorScheme.onSurface, false);
+    
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.light,
-      
-      // Color Scheme
-      colorScheme: ColorScheme.fromSeed(
-        seedColor: primaryGreen,
-        brightness: Brightness.light,
-        primary: primaryGreen,
-        secondary: primaryYellow,
-        tertiary: xpBlue,
-        surface: white,
-        background: lightGrey,
-        error: error,
-      ),
-      
-      // Typography
-      fontFamily: 'Poppins',
-      textTheme: _buildTextTheme(darkGrey),
+      colorScheme: colorScheme,
+      textTheme: textTheme,
       
       // App Bar Theme
-      appBarTheme: const AppBarTheme(
-        backgroundColor: primaryGreen,
-        foregroundColor: white,
+      appBarTheme: AppBarTheme(
+        backgroundColor: colorScheme.surface,
+        foregroundColor: colorScheme.onSurface,
         elevation: 0,
         centerTitle: true,
-        titleTextStyle: TextStyle(
-          fontFamily: 'Poppins',
-          fontSize: 20,
+        scrolledUnderElevation: 1,
+        shadowColor: SuqColors.shadowLight,
+        titleTextStyle: textTheme.titleLarge?.copyWith(
           fontWeight: FontWeight.w600,
-          color: white,
+        ),
+        iconTheme: IconThemeData(
+          color: colorScheme.onSurface,
+          size: 24,
         ),
       ),
       
       // Card Theme
       cardTheme: CardTheme(
         elevation: 2,
+        shadowColor: SuqColors.shadowLight,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
         ),
-        color: white,
+        color: colorScheme.surface,
+        surfaceTintColor: colorScheme.surfaceTint,
       ),
       
       // Elevated Button Theme
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          backgroundColor: primaryGreen,
-          foregroundColor: white,
+          backgroundColor: colorScheme.primary,
+          foregroundColor: colorScheme.onPrimary,
           elevation: 2,
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+          shadowColor: SuqColors.shadowLight,
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+          minimumSize: const Size(0, 48),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(12),
           ),
-          textStyle: const TextStyle(
-            fontFamily: 'Poppins',
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
+          textStyle: SuqTypography.buttonStyle(
+            color: colorScheme.onPrimary,
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
           ),
         ),
       ),
@@ -89,231 +82,271 @@ class AppTheme {
       // Outlined Button Theme
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
-          foregroundColor: primaryGreen,
-          side: const BorderSide(color: primaryGreen),
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+          foregroundColor: colorScheme.primary,
+          side: BorderSide(color: colorScheme.primary, width: 2),
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+          minimumSize: const Size(0, 48),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          textStyle: SuqTypography.buttonStyle(
+            color: colorScheme.primary,
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+      ),
+      
+      // Text Button Theme
+      textButtonTheme: TextButtonThemeData(
+        style: TextButton.styleFrom(
+          foregroundColor: colorScheme.primary,
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+          minimumSize: const Size(0, 40),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
           ),
-          textStyle: const TextStyle(
-            fontFamily: 'Poppins',
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
+          textStyle: SuqTypography.buttonStyle(
+            color: colorScheme.primary,
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
           ),
         ),
       ),
       
       // Input Decoration Theme
       inputDecorationTheme: InputDecorationTheme(
+        filled: true,
+        fillColor: colorScheme.surface,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: const BorderSide(color: mediumGrey),
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: colorScheme.outline),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: const BorderSide(color: mediumGrey),
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: colorScheme.outline),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: const BorderSide(color: primaryGreen, width: 2),
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: colorScheme.primary, width: 2),
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: const BorderSide(color: error),
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: colorScheme.error),
         ),
-        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-        labelStyle: const TextStyle(
-          fontFamily: 'Poppins',
-          color: mediumGrey,
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: colorScheme.error, width: 2),
+        ),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+        hintStyle: textTheme.bodyMedium?.copyWith(
+          color: colorScheme.onSurfaceVariant,
+        ),
+        labelStyle: textTheme.bodyMedium?.copyWith(
+          color: colorScheme.onSurfaceVariant,
+        ),
+        floatingLabelStyle: textTheme.bodySmall?.copyWith(
+          color: colorScheme.primary,
         ),
       ),
       
       // Bottom Navigation Bar Theme
-      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-        backgroundColor: white,
-        selectedItemColor: primaryGreen,
-        unselectedItemColor: mediumGrey,
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        backgroundColor: colorScheme.surface,
+        selectedItemColor: colorScheme.primary,
+        unselectedItemColor: colorScheme.onSurfaceVariant,
         type: BottomNavigationBarType.fixed,
         elevation: 8,
-      ),
-      
-      // Progress Indicator Theme
-      progressIndicatorTheme: const ProgressIndicatorThemeData(
-        color: primaryGreen,
-        linearTrackColor: lightGrey,
+        selectedLabelStyle: textTheme.labelSmall?.copyWith(
+          fontWeight: FontWeight.w600,
+        ),
+        unselectedLabelStyle: textTheme.labelSmall,
       ),
       
       // Chip Theme
       chipTheme: ChipThemeData(
-        backgroundColor: lightGrey,
-        selectedColor: primaryGreen,
-        labelStyle: const TextStyle(
-          fontFamily: 'Poppins',
-          fontSize: 14,
+        backgroundColor: colorScheme.surfaceContainerHighest,
+        selectedColor: colorScheme.primary,
+        disabledColor: colorScheme.surfaceContainerHighest.withOpacity(0.5),
+        labelStyle: textTheme.labelMedium,
+        secondaryLabelStyle: textTheme.labelMedium?.copyWith(
+          color: colorScheme.onPrimary,
         ),
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
         ),
       ),
+      
+      // Progress Indicator Theme
+      progressIndicatorTheme: ProgressIndicatorThemeData(
+        color: colorScheme.primary,
+        linearTrackColor: colorScheme.surfaceContainerHighest,
+        circularTrackColor: colorScheme.surfaceContainerHighest,
+      ),
+      
+      // Floating Action Button Theme
+      floatingActionButtonTheme: FloatingActionButtonThemeData(
+        backgroundColor: colorScheme.primary,
+        foregroundColor: colorScheme.onPrimary,
+        elevation: 6,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
+      ),
+      
+      // Dialog Theme
+      dialogTheme: DialogTheme(
+        backgroundColor: colorScheme.surface,
+        elevation: 8,
+        shadowColor: SuqColors.shadowLight,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
+        titleTextStyle: textTheme.headlineSmall,
+        contentTextStyle: textTheme.bodyMedium,
+      ),
+      
+      // Bottom Sheet Theme
+      bottomSheetTheme: BottomSheetThemeData(
+        backgroundColor: colorScheme.surface,
+        elevation: 8,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+        ),
+      ),
+      
+      // Divider Theme
+      dividerTheme: DividerThemeData(
+        color: colorScheme.outline,
+        thickness: 1,
+        space: 1,
+      ),
     );
   }
-
+  
+  /// Dark theme configuration
   static ThemeData get darkTheme {
+    final colorScheme = SuqColors.darkColorScheme;
+    final textTheme = _buildTextTheme(colorScheme.onSurface, true);
+    
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.dark,
-      
-      // Color Scheme
-      colorScheme: ColorScheme.fromSeed(
-        seedColor: primaryGreen,
-        brightness: Brightness.dark,
-        primary: primaryGreen,
-        secondary: primaryYellow,
-        tertiary: xpBlue,
-        surface: const Color(0xFF1E1E1E),
-        background: const Color(0xFF121212),
-        error: error,
-      ),
-      
-      // Typography
-      fontFamily: 'Poppins',
-      textTheme: _buildTextTheme(white),
+      colorScheme: colorScheme,
+      textTheme: textTheme,
       
       // App Bar Theme
-      appBarTheme: const AppBarTheme(
-        backgroundColor: Color(0xFF1E1E1E),
-        foregroundColor: white,
+      appBarTheme: AppBarTheme(
+        backgroundColor: colorScheme.surface,
+        foregroundColor: colorScheme.onSurface,
         elevation: 0,
         centerTitle: true,
-        titleTextStyle: TextStyle(
-          fontFamily: 'Poppins',
-          fontSize: 20,
+        scrolledUnderElevation: 1,
+        shadowColor: SuqColors.shadowDark,
+        titleTextStyle: textTheme.titleLarge?.copyWith(
           fontWeight: FontWeight.w600,
-          color: white,
+        ),
+        iconTheme: IconThemeData(
+          color: colorScheme.onSurface,
+          size: 24,
         ),
       ),
       
       // Card Theme
       cardTheme: CardTheme(
         elevation: 2,
+        shadowColor: SuqColors.shadowDark,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
         ),
-        color: const Color(0xFF1E1E1E),
+        color: colorScheme.surface,
+        surfaceTintColor: colorScheme.surfaceTint,
       ),
       
-      // Similar button and input themes adapted for dark mode...
+      // Similar button themes as light mode but with dark colors
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          backgroundColor: primaryGreen,
-          foregroundColor: white,
+          backgroundColor: colorScheme.primary,
+          foregroundColor: colorScheme.onPrimary,
           elevation: 2,
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+          shadowColor: SuqColors.shadowDark,
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+          minimumSize: const Size(0, 48),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(12),
           ),
-          textStyle: const TextStyle(
-            fontFamily: 'Poppins',
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
+          textStyle: SuqTypography.buttonStyle(
+            color: colorScheme.onPrimary,
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
           ),
         ),
       ),
+      
+      // Input Decoration Theme for dark mode
+      inputDecorationTheme: InputDecorationTheme(
+        filled: true,
+        fillColor: colorScheme.surface,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: colorScheme.outline),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: colorScheme.outline),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: colorScheme.primary, width: 2),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: colorScheme.error),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12),
+          borderSide: BorderSide(color: colorScheme.error, width: 2),
+        ),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+        hintStyle: textTheme.bodyMedium?.copyWith(
+          color: colorScheme.onSurfaceVariant,
+        ),
+        labelStyle: textTheme.bodyMedium?.copyWith(
+          color: colorScheme.onSurfaceVariant,
+        ),
+        floatingLabelStyle: textTheme.bodySmall?.copyWith(
+          color: colorScheme.primary,
+        ),
+      ),
+      
+      // Bottom Navigation Bar Theme
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        backgroundColor: colorScheme.surface,
+        selectedItemColor: colorScheme.primary,
+        unselectedItemColor: colorScheme.onSurfaceVariant,
+        type: BottomNavigationBarType.fixed,
+        elevation: 8,
+        selectedLabelStyle: textTheme.labelSmall?.copyWith(
+          fontWeight: FontWeight.w600,
+        ),
+        unselectedLabelStyle: textTheme.labelSmall,
+      ),
     );
   }
-
-  static TextTheme _buildTextTheme(Color baseColor) {
-    return TextTheme(
-      displayLarge: TextStyle(
-        fontSize: 32,
-        fontWeight: FontWeight.bold,
-        color: baseColor,
-        fontFamily: 'Poppins',
-      ),
-      displayMedium: TextStyle(
-        fontSize: 28,
-        fontWeight: FontWeight.bold,
-        color: baseColor,
-        fontFamily: 'Poppins',
-      ),
-      displaySmall: TextStyle(
-        fontSize: 24,
-        fontWeight: FontWeight.w600,
-        color: baseColor,
-        fontFamily: 'Poppins',
-      ),
-      headlineLarge: TextStyle(
-        fontSize: 22,
-        fontWeight: FontWeight.w600,
-        color: baseColor,
-        fontFamily: 'Poppins',
-      ),
-      headlineMedium: TextStyle(
-        fontSize: 20,
-        fontWeight: FontWeight.w600,
-        color: baseColor,
-        fontFamily: 'Poppins',
-      ),
-      headlineSmall: TextStyle(
-        fontSize: 18,
-        fontWeight: FontWeight.w600,
-        color: baseColor,
-        fontFamily: 'Poppins',
-      ),
-      titleLarge: TextStyle(
-        fontSize: 16,
-        fontWeight: FontWeight.w600,
-        color: baseColor,
-        fontFamily: 'Poppins',
-      ),
-      titleMedium: TextStyle(
-        fontSize: 14,
-        fontWeight: FontWeight.w500,
-        color: baseColor,
-        fontFamily: 'Poppins',
-      ),
-      titleSmall: TextStyle(
-        fontSize: 12,
-        fontWeight: FontWeight.w500,
-        color: baseColor,
-        fontFamily: 'Poppins',
-      ),
-      bodyLarge: TextStyle(
-        fontSize: 16,
-        fontWeight: FontWeight.normal,
-        color: baseColor,
-        fontFamily: 'Poppins',
-      ),
-      bodyMedium: TextStyle(
-        fontSize: 14,
-        fontWeight: FontWeight.normal,
-        color: baseColor,
-        fontFamily: 'Poppins',
-      ),
-      bodySmall: TextStyle(
-        fontSize: 12,
-        fontWeight: FontWeight.normal,
-        color: baseColor.withOpacity(0.7),
-        fontFamily: 'Poppins',
-      ),
-      labelLarge: TextStyle(
-        fontSize: 14,
-        fontWeight: FontWeight.w500,
-        color: baseColor,
-        fontFamily: 'Poppins',
-      ),
-      labelMedium: TextStyle(
-        fontSize: 12,
-        fontWeight: FontWeight.w500,
-        color: baseColor,
-        fontFamily: 'Poppins',
-      ),
-      labelSmall: TextStyle(
-        fontSize: 10,
-        fontWeight: FontWeight.w500,
-        color: baseColor.withOpacity(0.7),
-        fontFamily: 'Poppins',
-      ),
+  
+  /// Build text theme with Google Fonts
+  static TextTheme _buildTextTheme(Color baseColor, bool isDark) {
+    final baseTextTheme = SuqTypography.buildTextTheme(baseColor);
+    
+    return GoogleFonts.interTextTheme(baseTextTheme).copyWith(
+      // Override headings with Poppins
+      displayLarge: GoogleFonts.poppins(textStyle: baseTextTheme.displayLarge),
+      displayMedium: GoogleFonts.poppins(textStyle: baseTextTheme.displayMedium),
+      displaySmall: GoogleFonts.poppins(textStyle: baseTextTheme.displaySmall),
+      headlineLarge: GoogleFonts.poppins(textStyle: baseTextTheme.headlineLarge),
+      headlineMedium: GoogleFonts.poppins(textStyle: baseTextTheme.headlineMedium),
+      headlineSmall: GoogleFonts.poppins(textStyle: baseTextTheme.headlineSmall),
     );
   }
 }

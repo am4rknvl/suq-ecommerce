@@ -61,7 +61,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     ),
                   ],
                 ),
-                child: const Icon(
+                child: Icon(
                   Icons.shopping_bag_outlined,
                   size: 60,
                   color: AppTheme.primaryGreen,

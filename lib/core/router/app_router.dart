@@ -33,7 +33,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
         name: 'onboarding',
         builder: (context, state) => const OnboardingScreen(),
       ),
-      
+
       // Authentication
       GoRoute(
         path: '/login',
@@ -53,14 +53,14 @@ final appRouterProvider = Provider<GoRouter>((ref) {
           return OtpVerificationScreen(phoneNumber: phoneNumber);
         },
       ),
-      
+
       // Main App
       GoRoute(
         path: '/home',
         name: 'home',
         builder: (context, state) => const MainNavigationScreen(),
       ),
-      
+
       // Products
       GoRoute(
         path: '/product/:productId',
@@ -70,7 +70,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
           return ProductDetailsScreen(productId: productId);
         },
       ),
-      
+
       // Cart and Checkout
       GoRoute(
         path: '/cart',
@@ -82,14 +82,14 @@ final appRouterProvider = Provider<GoRouter>((ref) {
         name: 'checkout',
         builder: (context, state) => const CheckoutScreen(),
       ),
-      
+
       // Profile
       GoRoute(
         path: '/profile',
         name: 'profile',
         builder: (context, state) => const ProfileScreen(),
       ),
-      
+
       // Seller Features
       GoRoute(
         path: '/seller-dashboard',
@@ -107,13 +107,13 @@ final appRouterProvider = Provider<GoRouter>((ref) {
         builder: (context, state) => const ManageOrdersScreen(),
       ),
     ],
-    
+
     // Redirect logic
     redirect: (context, state) {
       final isLoggedIn = StorageService.isLoggedIn;
       final isOnboardingCompleted = StorageService.isOnboardingCompleted();
       final currentPath = state.matchedLocation;
-      
+
       // If not logged in and trying to access protected routes
       if (!isLoggedIn && _isProtectedRoute(currentPath)) {
         if (!isOnboardingCompleted && currentPath != '/onboarding') {
@@ -121,20 +121,22 @@ final appRouterProvider = Provider<GoRouter>((ref) {
         }
         return '/login';
       }
-      
+
       // If logged in and trying to access auth routes
       if (isLoggedIn && _isAuthRoute(currentPath)) {
         return '/home';
       }
-      
+
       // If onboarding not completed and logged in
-      if (isLoggedIn && !isOnboardingCompleted && currentPath != '/onboarding') {
+      if (isLoggedIn &&
+          !isOnboardingCompleted &&
+          currentPath != '/onboarding') {
         return '/onboarding';
       }
-      
+
       return null; // No redirect needed
     },
-    
+
     // Error handling
     errorBuilder: (context, state) => Scaffold(
       body: Center(
@@ -178,7 +180,7 @@ bool _isProtectedRoute(String path) {
     '/add-product',
     '/manage-orders',
   ];
-  
+
   return protectedRoutes.any((route) => path.startsWith(route));
 }
 
@@ -188,6 +190,6 @@ bool _isAuthRoute(String path) {
     '/signup',
     '/otp-verification',
   ];
-  
+
   return authRoutes.contains(path);
 }
